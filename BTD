@@ -11,14 +11,14 @@ pipeline {
        stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean compile'
+		sonarSummaries()
                 
             }
         }   
          stage('Deploy') {
             steps {
                   echo 'Deploy step'
-                  sonarSummaries()
-		  snDevOpsChange() 
+                  snDevOpsChange() 
             }
         }     
   }

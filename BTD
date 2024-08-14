@@ -33,7 +33,7 @@ def sonarSummaries() {
 			    -Dsonar.host.url=https://sonarcloud.io \
 			    -Dsonar.organization=ramarajupolanki \
 			    -Dsonar.projectKey=ramarajupolanki_ServiceNow-DevOps-Change-Sample'
-			    //8c5fe0915a1e4b00995edc284975b4f6d568a5c9
+			 
 			   
 		}
 	}

@@ -24,7 +24,7 @@ pipeline {
   }
 }
 def sonarSummaries() {
-	withSonarQubeEnv('sonarcloud.io'){
+	withSonarQubeEnv('rrsonar'){
 	   if(fileExists("sonar-project.properties")) {
 			sh '${SCANNER_HOME}/bin/sonar-scanner'
 		} else {

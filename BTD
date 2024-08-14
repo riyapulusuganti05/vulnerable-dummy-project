@@ -1,0 +1,118 @@
+def artifactname = "devops-snow-build-app.jar"
+def repoName = "JenkinsDevOpsProject"
+def pipelineName = "SunilPipelines/Sunil-Scripted-Pipeline-Sonar"
+def semanticVersion = "${env.BUILD_NUMBER}.0.0"
+def packageName = "devops-snow-build-pkg_${env.BUILD_NUMBER}"
+def version = "${env.BUILD_NUMBER}.0"
+def pkgName = "devops-snow-build-pkg_${env.BUILD_NUMBER}"
+def changeRequestNumber = "null"
+def buildNo ="${env.BUILD_NUMBER}"
+def currStageName = "none"
+ 
+pipeline {
+  agent any 
+  tools {
+       maven 'Maven'
+   }
+   environment {
+	 SCANNER_HOME = tool 'sonarScanner' 
+	}  
+  stages {
+       stage('Build !@') { 
+           steps {
+              echo 'Build Satge' 
+               sh 'mvn -B -DskipTests clean compile'
+	     // snDevOpsChange(ignoreErrors:false)
+	       // sonarSummaries()
+
+           }
+       }
+       stage('Test') {
+           steps {
+                sonarSummaries()
+		sh 'mvn -B package --file pom.xml'
+              //  veracode applicationName: "VeraDemo10", criticality: 'VeryHigh', debug: true, timeout: 20, fileNamePattern: '', pHost: '', pPassword: '', pUser: '', replacementPattern: '', sandboxName: '', scanExcludesPattern: '', scanIncludesPattern: '', scanName: "${BUILD_TAG}", uploadExcludesPattern: '', uploadIncludesPattern: 'target/DemoMavenProject-0.0.1-SNAPSHOT.jar', vid: "5a57339d6779ffb76782e03df3f6e9d1", vkey: "f31d151c427a3286469a6291b14dee15e7f553e066b32c801f09014dc3282de4f51a81cd0bde7c7dd9d95de9a71a32c8a2c582158f278320ae765fe9fd232e0a",waitForScan : true
+		//  veracode applicationName: "App-DevOps-Azure-POC", criticality: 'VeryHigh', debug: true, timeout: 20, fileNamePattern: '', pHost: '', pPassword: '', pUser: '', replacementPattern: '', sandboxName: '', scanExcludesPattern: '', scanIncludesPattern: '', scanName: "${BUILD_TAG}", uploadExcludesPattern: '', uploadIncludesPattern: 'target/DemoMavenProject-0.0.1-SNAPSHOT.jar', vid: "5a57339d6779ffb76782e03df3f6e9d1", vkey: "f31d151c427a3286469a6291b14dee15e7f553e066b32c801f09014dc3282de4f51a81cd0bde7c7dd9d95de9a71a32c8a2c582158f278320ae765fe9fd232e0a",waitForScan : true
+	        snDevOpsSecurityResult securityResultAttributes: "{'scanner': 'Veracode','applicationName': 'VeraDemo10', 'securityToolId' : ''}"
+               // sh 'mvn test'
+           }
+        //  post {
+        //    always {
+         //      junit "**/target/surefire-reports/TEST-DevOpsDemo.Calculator.CalculatorTest.xml"
+          //  }
+        //  }
+       }
+
+     stage('Security') 
+       {
+	   steps {
+                echo 'Security ....'
+		//snDevOpsSecurityResult securityResultAttributes: '{"scanner": "Checkmarx SAST", "projectId": "1076","securityToolId": "632ff27387d10610597bca26cebb3576"}'
+	 	snDevOpsSecurityResult securityResultAttributes: "{'scanner': 'Veracode','applicationName': 'VeraDemo10','securityToolId' : ''}"
+	}
+    }
+
+ 
+   stage('Deploy') {
+        steps {
+		script{
+		//sh 'mvn -B package --file pom.xml'    
+                echo 'Running deploy stage' 
+	       // snDevOpsSecurityResult configurationName: "DevOps-devopsqevancouver002.service-now.com-1709901502633",securityResultAttributes: "{'scanner': 'Veracode','applicationName': 'PetStoreAPI-Github', 'securityToolId' : ''}"
+		snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"master"}""")
+		snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"master"}""")
+		//snDevOpsChange changeRequestDetails: '{ "attributes": {"chg_model": "adffaa9e4370211072b7f6be5bb8f2ed"}}',configurationName: 'DevOps-rpvr3.service-now.com-1709727767377'	 	
+	        snDevOpsChange changeRequestDetails: '{ "attributes": { "type": "standard", "standard_change_template": "508e02ec47410200e90d87e8dee49058"}}'
+	       // snDevOpsChange()
+		stageName = "Deploy"
+		
+	       //changeRequestNumber = snDevOpsGetChangeNumber changeDetails: """{ "pipeline_name": "Riya_Scripted2", "build_number": "${buildNo}", "stage_name": "Deploy", "branch_name": "master"}"""
+	      // snDevOpsChange abortOnChangeCreationFailure: true, abortOnChangeStepTimeOut: false, changeCreationTimeOut: 10, changeRequestDetails: '{ "chg_model": "007c4001c343101035ae3f52c1d3aeb2","attributes": { "short_description": "Test description", "priority": "1", "start_date": "2024-01-11 08:00:00", "end_date": "2024-01-11 08:00:00", "justification": "test justification", "description": "test description", "cab_required": true, "comments": "This update for work notes is from jenkins file", "work_notes": "test work notes", "assignment_group": "a715cd759f2002002920bde8132e7018" }, "setCloseCode": false }', changeStepTimeOut: 70, pollingInterval: 10
+	      //  snDevOpsChange changeRequestDetails: '{ "attributes": {"chg_model": "adffaa9e4370211072b7f6be5bb8f2ed"}}'	
+		changeRequestNumber = snDevOpsGetChangeNumber(changeDetails: """{"stage_name":"${stageName}"}""")
+		echo "${changeRequestNumber}"
+		snDevOpsUpdateChangeInfo(changeRequestDetails: 
+                        """{
+			    "close_code": "successful",
+			    "state": "3", 
+			    "close_notes": "Deployment to PROD was failed test 123",
+                            "short_description": "Short description updated to Test description in ${currStageName} Step by ${env.BUILD_NUMBER}",
+                            "priority": "1",
+                            "start_date": "2021-02-05 08:00:00",
+                            "end_date": "2022-12-25 08:00:00",
+                            "justification": "test justification",
+                            "description": "test description",
+                            "cab_required": true,
+                            "comments": "This update for comments is from jenkins file",
+                            "work_notes": "This update for work_notes is from jenkins file"
+                        }""", 
+                        changeRequestNumber: """${changeRequestNumber}""")
+		 
+		}
+            }
+           
+        }
+    }
+}
+
+
+ def sonarSummaries() {
+	withSonarQubeEnv('sonarcloud.io'){
+	   if(fileExists("sonar-project.properties")) {
+			sh '${SCANNER_HOME}/bin/sonar-scanner'
+		} else {
+			sh 'mvn clean verify sonar:sonar \
+			    -Dsonar.login=8c5fe0915a1e4b00995edc284975b4f6d568a5c9 \
+			    -Dsonar.host.url=https://sonarcloud.io \
+			    -Dsonar.organization=riyapulusuganti05 \
+			    -Dsonar.projectKey=riyapulusuganti05_vulnerable-dummy-project'
+			  //  -Dsonar.branch.name=${env.GIT_BRANCH}
+		}
+	}
+	//timeout(time: 1, unit: 'MINUTES') {
+		//waitForQualityGate abortPipeline: false
+	//}
+}
+        
+      
+  

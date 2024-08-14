@@ -1,204 +1,201 @@
 package com.example;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.io.File;
-import java.io.IOException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Base64;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.Socket;
-import java.util.Properties;
+import java.io.*;
+import java.net.*;
+import java.nio.charset.StandardCharsets;
+import java.security.*;
+import java.sql.*;
+import java.util.*;
+import java.util.logging.*;
+import javax.crypto.*;
+import javax.crypto.spec.*;
+import javax.servlet.http.*;
 
 public class App {
 
+    private static final Logger logger = Logger.getLogger(App.class.getName());
+
     public static void main(String[] args) {
         // SQL Injection Vulnerability
-        String userId = "1' OR '1'='1";
-        String query = "SELECT * FROM users WHERE id = '" + userId + "'";
-
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "user", "password");
-             Statement stmt = conn.createStatement()) {
-
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                System.out.println(rs.getString("name"));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        // Unvalidated Input Vulnerability
-        String filePath = args.length > 0 ? args[0] : "default.txt";
-        File file = new File(filePath);
-
-        try {
-            file.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Hardcoded Credentials Vulnerability
-        String credentials = "user:password";
-        String encodedCredentials = Base64.getEncoder().encodeToString(credentials.getBytes());
-        System.out.println("Encoded credentials: " + encodedCredentials);
+        sqlInjectionVulnerability("1 OR 1=1");
 
         // Command Injection Vulnerability
-        String command = "ls -l " + args[0]; // Vulnerable: does not sanitize input
+        commandInjectionVulnerability("example.com");
+
+        // Cross-Site Scripting (XSS) Vulnerability
+        xssVulnerability("<script>alert('XSS')</script>");
+
+        // Insecure Deserialization Vulnerability
+        insecureDeserializationVulnerability();
+
+        // Hardcoded Credentials Vulnerability
+        hardcodedCredentialsVulnerability();
+
+        // Insecure Cryptographic Storage Vulnerability
+        insecureCryptographicStorageVulnerability("Sensitive Data");
+
+        // Path Traversal Vulnerability
+        pathTraversalVulnerability("../../etc/passwd");
+
+        // Trust Boundary Violation
+        trustBoundaryViolationVulnerability("system.property");
+
+        // Open Redirect Vulnerability
+        openRedirectVulnerability("http://malicious.com");
+
+        // XML External Entity (XXE) Vulnerability
+        xxeVulnerability();
+
+        // Use of Weak Hashing Algorithm
+        weakHashingVulnerability("password123");
+
+        // LDAP Injection Vulnerability
+        ldapInjectionVulnerability("(|(uid=admin)(uid=*))");
+
+        // Insufficient Logging & Monitoring
+        insufficientLoggingVulnerability("Sensitive operation performed.");
+
+        // Clear Text Transmission of Sensitive Information
+        clearTextTransmissionVulnerability();
+    }
+
+    // SQL Injection Vulnerability
+    public static void sqlInjectionVulnerability(String userId) {
+        String query = "SELECT * FROM users WHERE id = '" + userId + "'";
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "user", "password");
+             Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                System.out.println("User ID: " + rs.getString("id"));
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "SQL Injection vulnerability triggered", e);
+        }
+    }
+
+    // Command Injection Vulnerability
+    public static void commandInjectionVulnerability(String host) {
+        String command = "ping -c 4 " + host;
         try {
             Process process = Runtime.getRuntime().exec(command);
-            process.waitFor();
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    System.out.println(line);
+                }
+            }
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Command Injection vulnerability triggered", e);
         }
+    }
 
-        // Directory Traversal Vulnerability
-        try (BufferedReader br = new BufferedReader(new FileReader("../../etc/passwd"))) { // Vulnerable: reads arbitrary files
+    // Cross-Site Scripting (XSS) Vulnerability
+    public static void xssVulnerability(String userInput) {
+        String response = "<html><body>User Input: " + userInput + "</body></html>";
+        System.out.println(response);
+    }
+
+    // Insecure Deserialization Vulnerability
+    public static void insecureDeserializationVulnerability() {
+        String serializedObject = "rO0ABXNyACxqYXZhLnV0aWwuQXJyYXlMaXN0xwzHcTdc...";
+        try (ObjectInputStream ois = new ObjectInputStream(
+                new ByteArrayInputStream(Base64.getDecoder().decode(serializedObject)))) {
+            Object obj = ois.readObject();
+            System.out.println("Deserialized Object: " + obj);
+        } catch (IOException | ClassNotFoundException e) {
+            logger.log(Level.SEVERE, "Insecure Deserialization vulnerability triggered", e);
+        }
+    }
+
+    // Hardcoded Credentials Vulnerability
+    public static void hardcodedCredentialsVulnerability() {
+        String username = "admin";
+        String password = "password123";
+        System.out.println("Using credentials: " + username + "/" + password);
+    }
+
+    // Insecure Cryptographic Storage Vulnerability
+    public static void insecureCryptographicStorageVulnerability(String data) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(data.getBytes(StandardCharsets.UTF_8));
+            byte[] digest = md.digest();
+            System.out.println("MD5 Digest: " + Base64.getEncoder().encodeToString(digest));
+        } catch (NoSuchAlgorithmException e) {
+            logger.log(Level.SEVERE, "Insecure Cryptographic Storage vulnerability triggered", e);
+        }
+    }
+
+    // Path Traversal Vulnerability
+    public static void pathTraversalVulnerability(String filePath) {
+        File file = new File(filePath);
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Path Traversal vulnerability triggered", e);
         }
+    }
 
-        // Insecure Randomness Vulnerability
-        int randomNum = (int) (Math.random() * 100); // Vulnerable: uses insecure randomness
-        System.out.println("Random number: " + randomNum);
+    // Trust Boundary Violation Vulnerability
+    public static void trustBoundaryViolationVulnerability(String property) {
+        String value = System.getProperty(property);
+        System.out.println("Property Value: " + value);
+    }
 
-        // Insecure Network Connection Vulnerability
+    // Open Redirect Vulnerability
+    public static void openRedirectVulnerability(String redirectUrl) {
+        System.out.println("Redirecting to: " + redirectUrl);
+        // Normally you would perform a redirect here, e.g., response.sendRedirect(redirectUrl);
+    }
+
+    // XML External Entity (XXE) Vulnerability
+    public static void xxeVulnerability() {
+        String xml = "<?xml version=\"1.0\"?><!DOCTYPE foo [<!ELEMENT foo ANY><!ENTITY xxe SYSTEM \"file:///etc/passwd\">]><foo>&xxe;</foo>";
+        try {
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            factory.setFeature("http://xml.org/sax/features/external-general-entities", true);
+            factory.setFeature("http://xml.org/sax/features/external-parameter-entities", true);
+            factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", true);
+            SAXParser saxParser = factory.newSAXParser();
+            saxParser.parse(new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8)), new DefaultHandler());
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "XXE vulnerability triggered", e);
+        }
+    }
+
+    // Use of Weak Hashing Algorithm
+    public static void weakHashingVulnerability(String data) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] hash = md.digest(data.getBytes(StandardCharsets.UTF_8));
+            System.out.println("MD5 Hash: " + Base64.getEncoder().encodeToString(hash));
+        } catch (NoSuchAlgorithmException e) {
+            logger.log(Level.SEVERE, "Weak Hashing vulnerability triggered", e);
+        }
+    }
+
+    // LDAP Injection Vulnerability
+    public static void ldapInjectionVulnerability(String userInput) {
+        String ldapFilter = "(&(objectClass=person)(uid=" + userInput + "))";
+        System.out.println("LDAP Filter: " + ldapFilter);
+        // Assume we perform a search with the above filter
+    }
+
+    // Insufficient Logging & Monitoring
+    public static void insufficientLoggingVulnerability(String event) {
+        System.out.println("Event occurred: " + event);
+    }
+
+    // Clear Text Transmission of Sensitive Information
+    public static void clearTextTransmissionVulnerability() {
         try (Socket socket = new Socket("example.com", 80);
-             OutputStream out = socket.getOutputStream();
-             InputStream in = socket.getInputStream()) {
-
-            out.write("GET / HTTP/1.1\r\nHost: example.com\r\n\r\n".getBytes()); // Vulnerable: no SSL/TLS
-            int data;
-            while ((data = in.read()) != -1) {
-                System.out.print((char) data);
-            }
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
+            out.println("Sensitive data over HTTP"); // Vulnerable: transmitted in clear text
         } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Logging Sensitive Information Vulnerability
-        Logger logger = Logger.getLogger(App.class.getName());
-        logger.log(Level.INFO, "User login attempt with credentials: {0}", credentials); // Vulnerable: logs sensitive info
-
-        // Trust Boundary Violation Vulnerability
-        Properties properties = new Properties();
-        properties.put("user.dir", args[0]); // Vulnerable: modifies system properties
-
-        try {
-            InetAddress.getByName("google.com");
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }
-
-        // Cross-Site Scripting (XSS) Vulnerability
-        // Assuming this is a servlet
-    }
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String param = request.getParameter("param");
-        response.getWriter().write("<html><body>Param: " + param + "</body></html>"); // Vulnerable: reflects untrusted data
-    }
-
-    private static final String PASSWORD = "password123"; // Vulnerable: hardcoded sensitive data
-
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String data = request.getReader().readLine();
-        response.getWriter().write("<html><body>Data: " + data + "</body></html>"); // Vulnerable: reflects untrusted data
-    }
-
-    public void fileDisclosure(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String filePath = request.getParameter("file");
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) { // Vulnerable: path traversal
-            String line;
-            while ((line = br.readLine()) != null) {
-                response.getWriter().write(line + "<br>");
-            }
-        } catch (IOException e) {
-            response.getWriter().write("Error: " + e.getMessage());
+            logger.log(Level.SEVERE, "Clear Text Transmission vulnerability triggered", e);
         }
     }
-    public void vulnerableSQLInjection(String userInput) {
-        String sql = "SELECT * FROM users WHERE name = '" + userInput + "'"; // Vulnerable code
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "user", "password");
-             Statement stmt = conn.createStatement()) {
-
-            ResultSet rs = stmt.executeQuery(sql); // Vulnerable code
-            while (rs.next()) {
-                System.out.println(rs.getString("name"));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    public void vulnerableCommandInjection(String userInput) {
-        try {
-            String command = "ping -c 3 " + userInput; // Vulnerable code
-            Process process = Runtime.getRuntime().exec(command); // Vulnerable code
-            process.waitFor();
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-    public void vulnerablePathTraversal(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String filePath = request.getParameter("file");
-        File file = new File("/var/www/uploads/" + filePath); // Vulnerable code
-
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) { // Vulnerable code
-            String line;
-            while ((line = br.readLine()) != null) {
-                response.getWriter().write(line + "<br>");
-            }
-        } catch (IOException e) {
-            response.getWriter().write("Error: " + e.getMessage());
-        }
-    }
-
-    import java.io.ByteArrayInputStream;
-import java.io.ObjectInputStream;
-import java.util.Base64;
-
-    public void vulnerableDeserialization(String serializedObject) {
-        try {
-            byte[] data = Base64.getDecoder().decode(serializedObject);
-            ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data)); // Vulnerable code
-            Object obj = ois.readObject();
-            ois.close();
-            System.out.println(obj);
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-    public void vulnerableIDOR(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String userId = request.getParameter("userId");
-        String query = "SELECT * FROM users WHERE id = " + userId; // Vulnerable code
-
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "user", "password");
-             Statement stmt = conn.createStatement()) {
-
-            ResultSet rs = stmt.executeQuery(query);
-            if (rs.next()) {
-                response.getWriter().write("User: " + rs.getString("name"));
-            } else {
-                response.getWriter().write("User not found");
-            }
-        } catch (Exception e) {
-            response.getWriter().write("Error: " + e.getMessage());
-        }
-    }
-
-
 }

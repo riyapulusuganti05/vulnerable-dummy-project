@@ -29,10 +29,10 @@ def sonarSummaries() {
 			sh '${SCANNER_HOME}/bin/sonar-scanner'
 		} else {
 			sh 'mvn clean verify sonar:sonar \
-			    -Dsonar.login=70ca77776d514897303e8ecccf214c00ad89e6af \
+			    -Dsonar.login=8c5fe0915a1e4b00995edc284975b4f6d568a5c9 \
 			    -Dsonar.host.url=https://sonarcloud.io \
-			    -Dsonar.organization=ramarajupolanki \
-			    -Dsonar.projectKey=ramarajupolanki_ServiceNow-DevOps-Change-Sample'
+			    -Dsonar.organization=riyapulusuganti05 \
+			    -Dsonar.projectKey=riyapulusuganti05_vulnerable-dummy-project/'
 			   
 		}
 	}

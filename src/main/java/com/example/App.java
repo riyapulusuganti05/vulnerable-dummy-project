@@ -5,11 +5,13 @@ import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.sql.*;
-import java.util.*;
+import java.util.Base64;
 import java.util.logging.*;
-import javax.crypto.*;
-import javax.crypto.spec.*;
 import javax.servlet.http.*;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import org.xml.sax.InputSource;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class App {
 
@@ -38,7 +40,7 @@ public class App {
         pathTraversalVulnerability("../../etc/passwd");
 
         // Trust Boundary Violation
-        trustBoundaryViolationVulnerability("system.property");
+        trustBoundaryViolationVulnerability("user.dir");
 
         // Open Redirect Vulnerability
         openRedirectVulnerability("http://malicious.com");
@@ -160,7 +162,7 @@ public class App {
             factory.setFeature("http://xml.org/sax/features/external-parameter-entities", true);
             factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", true);
             SAXParser saxParser = factory.newSAXParser();
-            saxParser.parse(new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8)), new DefaultHandler());
+            saxParser.parse(new InputSource(new StringReader(xml)), new DefaultHandler());
         } catch (Exception e) {
             logger.log(Level.SEVERE, "XXE vulnerability triggered", e);
         }

@@ -17,8 +17,8 @@ pipeline {
          stage('Deploy') {
             steps {
                   echo 'Deploy step'
-                // snDevOpsChange() 
                   sonarSummaries()
+		  snDevOpsChange() 
             }
         }     
   }

@@ -1,0 +1,96 @@
+import java.util.*;
+
+public class SonarIssuesGenerator {
+
+    public static void main(String[] args) {
+        SonarIssuesGenerator instance = new SonarIssuesGenerator();
+        instance.badCode();
+        instance.badCode(); // Duplicate call
+        instance.badCode(); // Duplicate call
+        instance.badCode(); // Duplicate call
+        instance.unusedMethod1();
+        instance.unusedMethod2();
+        instance.unusedMethod3();
+        instance.deepNestedCode();
+        instance.longMethod();
+        instance.hardCodedCredentials();
+    }
+
+    public void badCode() {
+        int a = 10;
+        int b = 20;
+        int c = a + b;
+
+        String unusedString = "This is unused";
+
+        try {
+            int result = c / 0; // Bug
+        } catch (Exception e) {
+            // Empty catch block
+        }
+
+        if (c > 5) {
+            if (c > 10) {
+                if (c > 15) {
+                    if (c > 20) {
+                        if (c > 25) {
+                            System.out.println("Deep nesting");
+                        }
+                    }
+                }
+            }
+        }
+
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i)); // Possible IndexOutOfBounds
+        }
+
+        Date date = new Date();
+        date.getHours(); // Deprecated method
+        date.getSeconds(); // Deprecated method
+    }
+
+    public void unusedMethod1() {
+        int x = 100;
+        int y = 200;
+        int sum = x + y;
+    }
+
+    public void unusedMethod2() {
+        String data = "unused";
+        int number = 42;
+    }
+
+    public void unusedMethod3() {
+        Map<String, String> map = new HashMap<>();
+        map.put("key", "value");
+    }
+
+    public void deepNestedCode() {
+        int i = 0;
+        if (i == 0) {
+            if (i < 5) {
+                if (i > -1) {
+                    if (i != 1) {
+                        if (i < 10) {
+                            System.out.println("Nested again");
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void longMethod() {
+        for (int i = 0; i < 100; i++) {
+            System.out.println("Spam line " + i);
+        }
+    }
+
+    public void hardCodedCredentials() {
+        String password = "123456";
+        String apiKey = "abcde-xyz-12345";
+        String secret = "top-secret";
+    }
+}

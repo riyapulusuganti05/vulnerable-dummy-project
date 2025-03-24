@@ -1,40 +1,40 @@
+package com.example;
+
+import java.io.*;
+import java.security.MessageDigest;
+import java.sql.*;
+
 public class SecurityTest {
-
     public static void main(String[] args) {
-        for (int i = 0; i < 500; i++) {
-            hardcodedPasswordIssue(i);
-            sqlInjectionIssue(i);
-            commandInjectionIssue(i);
-            weakHashingIssue(i);
-        }
-    }
-
-    public static void hardcodedPasswordIssue(int i) {
-        String password = "P@ssw0rd" + i; // Sensitive data hardcoded
+        String password = "hardcodedPassword123"; // S2068
         System.out.println("Password: " + password);
-    }
 
-    public static void sqlInjectionIssue(int i) {
-        String userInput = "user" + i;
-        String query = "SELECT * FROM users WHERE username = '" + userInput + "'"; // SQL Injection
+        // SQL Injection
+        String userInput = "admin' OR '1'='1";
+        String query = "SELECT * FROM users WHERE username = '" + userInput + "'"; // S2077
         System.out.println("Query: " + query);
-    }
 
-    public static void commandInjectionIssue(int i) {
-        String input = "file" + i;
         try {
-            Runtime.getRuntime().exec("ls " + input); // Command Injection
-        } catch (Exception e) {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/db", "root", "root");
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
 
-    public static void weakHashingIssue(int i) {
+        // Command Injection
         try {
-            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5"); // Insecure hashing
-            md.update(("data" + i).getBytes());
+            Runtime.getRuntime().exec("rm -rf /tmp/" + userInput); // S2092
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Insecure Hash
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5"); // S2070
+            md.update(password.getBytes());
             byte[] digest = md.digest();
-            System.out.println("Hash: " + new String(digest));
+            System.out.println(new String(digest));
         } catch (Exception e) {
             e.printStackTrace();
         }

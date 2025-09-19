@@ -1,0 +1,154 @@
+
+Scom.example.IssueGenerator#processComplexData(Ljava/lang/String;)Ljava/lang/String;j
+^/Users/riya.pulusuganti/vulnerable-dummy-project/src/main/java/com/example/IssueGenerator.javaû û(%"5*Ô
+3
+þ þ(Ÿœ
+
+þ þ(#
+
+%4char"java.lang.String#charAt(I)C*6
+
+__unknown_file (
+
+datajava.lang.String*"
+
+__unknown_file (
+""2	charAt(I)‰
+†
+
+ÿ+ ÿ(6
+%5double"java.lang.Math#sin(D)D*.
+
+__unknown_file ("
+java.lang.Math*"
+
+__unknown_file (
+""¶
+³
+
+ÿ ÿ(7
+%6double"java.lang.Math#pow(DD)D*.
+
+__unknown_file ("
+java.lang.Math*"
+
+__unknown_file (
+""**
+
+__unknown_file (
+
+%5double‰
+†
+
+ÿ: ÿ(E
+%7double"java.lang.Math#cos(D)D*.
+
+__unknown_file ("
+java.lang.Math*"
+
+__unknown_file (
+""z
+x
+
+ÿ ÿ(E
+%8double"__calculate*
+
+ÿ8 ÿ(9
++*
+
+ÿ ÿ(7
+
+%6double*
+
+ÿ: ÿ(E
+
+%7doublei
+g
+
+€" €(1
+%9double"__calculate*
+
+€, €(-
+%*
+
+€" €(+
+""*
+
+€. €(12€ãà
+
+€ €(3
+%10java.lang.StringBuilder":java.lang.StringBuilder#append(C)Ljava/lang/StringBuilder;*?
+
+__unknown_file (#
+!
+resultjava.lang.StringBuilder**
+
+__unknown_file (
+
+%9double2	append(C)*
+4*€
+4
+ý ý(wu
+
+ý ý()	
+%2int"java.lang.String#length()I*6
+
+__unknown_file (
+
+datajava.lang.String2length()n
+l
+
+ý ý()
+%3boolean"	__compare*
+
+ý ý(
+<*
+
+ý ý(
+""*
+
+ý ý()
+	
+%2int*
+3
+1*È
+5
+ü ü(2FD
+
+ü# ü(0
+%0java.lang.StringBuilder"java.lang.StringBuildert
+r
+
+ü ü(2
+%1"!java.lang.StringBuilder#<init>()V*;
+
+__unknown_file (
+
+%0java.lang.StringBuildert
+r
+
+ü ü(3!
+resultjava.lang.StringBuilder"__id*;
+
+__unknown_file (
+
+%0java.lang.StringBuilder*
+4*æ
+1
+‚ ‚(«¨
+
+‚ ‚( 
+%11java.lang.String"4java.lang.StringBuilder#toString()Ljava/lang/String;*?
+
+__unknown_file (#
+!
+resultjava.lang.StringBuilder2
+toString()"'
+
+‚ ‚(!
+
+%11java.lang.String:&
+
+û& û(1
+datajava.lang.StringB
+com.example.IssueGenerator

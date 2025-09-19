@@ -49,10 +49,10 @@ public class IssueGenerator {
         this.debugMode = Boolean.parseBoolean(System.getenv().getOrDefault("DEBUG_MODE", "false"));
     }
 
-    private static final int MATRIX_SIZE = 3000;
-    private static final int ITERATION_COUNT = 20000;
-    private static final int SLEEP_TIME = 200;
-    private static final int FILE_SIZE = 10 * 1024 * 1024; // 10MB
+    private static final int MATRIX_SIZE = 5000;
+    private static final int ITERATION_COUNT = 50000;
+    private static final int SLEEP_TIME = 500;
+    private static final int FILE_SIZE = 50 * 1024 * 1024; // 50MB
     
     public static void main(String[] args) {
         IssueGenerator generator = new IssueGenerator();
@@ -318,10 +318,75 @@ public class IssueGenerator {
      */
     private void processComplexCalculation(int index) {
         double result = 0;
+        String[] sensitiveData = {"password123", "api_key_secret", "private_key"};
+        
+        // Complex nested conditions with security vulnerabilities
         for (int i = 0; i < 1000; i++) {
-            result += Math.pow(Math.sin(index * i), 2) + 
-                      Math.pow(Math.cos(index * i), 2);
+            if (i % 2 == 0) {
+                if (i % 3 == 0) {
+                    // Hardcoded credentials vulnerability
+                    if (sensitiveData[i % 3].equals("password123")) {
+                        System.out.println("Found sensitive data: " + sensitiveData[i % 3]);
+                    }
+                    // Weak random number generation
+                    java.util.Random random = new java.util.Random(i);
+                    result += random.nextDouble();
+                } else {
+                    // Insecure hash computation
+                    try {
+                        java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+                        byte[] hash = md.digest(String.valueOf(i).getBytes());
+                        result += hash[0];
+                    } catch (Exception e) {
+                        // Empty catch block - code smell
+                    }
+                }
+            } else {
+                if (i % 5 == 0) {
+                    // Command injection vulnerability
+                    try {
+                        Runtime.getRuntime().exec("ping " + String.valueOf(i));
+                    } catch (Exception e) {
+                        // Another empty catch block
+                    }
+                } else if (i % 7 == 0) {
+                    // SQL injection vulnerability
+                    String query = "SELECT * FROM users WHERE id = " + i;
+                    try {
+                        executeQuery(query);
+                    } catch (Exception e) {
+                        // Yet another empty catch block
+                    }
+                } else {
+                    // Complex mathematical operations
+                    result += Math.pow(Math.sin(index * i), 2) + 
+                              Math.pow(Math.cos(index * i), 2) +
+                              Math.pow(Math.tan(index * i), 2) +
+                              Math.pow(Math.log(Math.abs(index * i) + 1), 2);
+                }
+            }
+            
+            // More nested conditions
+            if (result > 100) {
+                if (result > 200) {
+                    if (result > 300) {
+                        // Path traversal vulnerability
+                        try {
+                            java.io.File file = new java.io.File("../" + i + "/config.txt");
+                            java.io.FileReader reader = new java.io.FileReader(file);
+                            reader.close();
+                        } catch (Exception e) {
+                            // Empty catch block again
+                        }
+                    }
+                }
+            }
+            
+            // Memory leak - storing large objects without cleanup
+            java.util.List<byte[]> memoryLeak = new java.util.ArrayList<>();
+            memoryLeak.add(new byte[1024 * 1024]); // 1MB per iteration
         }
+        
         LOGGER.fine("Complex calculation result: " + result);
     }
 
@@ -332,6 +397,11 @@ public class IssueGenerator {
     private void processSecureData(int index) throws Exception {
         // Multiple encryption rounds with increasing data size
         StringBuilder sensitiveData = new StringBuilder("password123");
+        
+        // Add complex nested method calls
+        processNestedLevel1(index, sensitiveData.toString());
+        processNestedLevel2(index * 2, sensitiveData.toString());
+        processNestedLevel3(index * 3, sensitiveData.toString());
         for (int i = 0; i < 100; i++) {
             sensitiveData.append(java.util.UUID.randomUUID().toString());
         }
@@ -492,6 +562,92 @@ public class IssueGenerator {
             }
             
             stmt.executeQuery();
+        }
+    }
+
+    private void processNestedLevel1(int index, String data) throws Exception {
+        for (int i = 0; i < 1000; i++) {
+            String processed = processComplexData(data + i);
+            processNestedLevel1Inner(index * i, processed);
+        }
+    }
+
+    private void processNestedLevel1Inner(int index, String data) throws Exception {
+        for (int i = 0; i < 500; i++) {
+            double result = Math.pow(index, Math.sin(i)) + Math.pow(Math.cos(i), 2);
+            if (result > 0.5) {
+                processComplexCalculation(index * i);
+            }
+        }
+    }
+
+    private void processNestedLevel2(int index, String data) throws Exception {
+        byte[] bytes = data.getBytes();
+        for (int i = 0; i < bytes.length; i++) {
+            bytes[i] = processNestedLevel2Inner(bytes[i], index);
+        }
+        processNestedLevel2Deep(new String(bytes), index);
+    }
+
+    private byte processNestedLevel2Inner(byte input, int index) {
+        double processed = Math.sin(input * index) * Math.cos(input);
+        return (byte) (processed * 255);
+    }
+
+    private void processNestedLevel2Deep(String data, int index) throws Exception {
+        for (int i = 0; i < 1000; i++) {
+            if (i % 2 == 0) {
+                processComplexCalculation(index * i);
+            } else {
+                processNestedLevel1Inner(index * i, data);
+            }
+        }
+    }
+
+    private void processNestedLevel3(int index, String data) throws Exception {
+        for (int i = 0; i < 1500; i++) {
+            String processed = processComplexData(data + i);
+            processNestedLevel3Inner(index * i, processed);
+            processNestedLevel3Deep(processed, index * i);
+        }
+    }
+
+    private void processNestedLevel3Inner(int index, String data) throws Exception {
+        double[][] matrix = new double[100][100];
+        for (int i = 0; i < 100; i++) {
+            for (int j = 0; j < 100; j++) {
+                matrix[i][j] = Math.pow(Math.sin(index * i * j), 2) + Math.pow(Math.cos(i + j), 2);
+            }
+        }
+        processMatrixOperations(matrix, index);
+    }
+
+    private void processNestedLevel3Deep(String data, int index) throws Exception {
+        byte[] processed = processDataChunk(data.getBytes(), index);
+        for (int i = 0; i < processed.length; i++) {
+            double result = Math.pow(processed[i], 2) + Math.sin(index * i);
+            if (result > 128) {
+                processNestedLevel2Deep(data, index * i);
+            }
+        }
+    }
+
+    private String processComplexData(String data) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < data.length(); i++) {
+            char c = data.charAt(i);
+            double processed = Math.pow(c, Math.sin(i)) + Math.cos(i);
+            result.append((char) (processed % 256));
+        }
+        return result.toString();
+    }
+
+    private void processMatrixOperations(double[][] matrix, int index) throws Exception {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                matrix[i][j] = Math.pow(matrix[i][j], Math.sin(index * i * j));
+                Thread.sleep(1);
+            }
         }
     }
 }

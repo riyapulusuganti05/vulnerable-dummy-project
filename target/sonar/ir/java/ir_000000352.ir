@@ -1,0 +1,29 @@
+
+255int0this
+Ð Ð()"com.example.IssueGeneratorinput
+Ð* Ð(4"byteindex
+Ð6 Ð(?"int"Ó)
+'
+
+Ñ$ Ñ(1"	#binop *#2*:Bint>
+<
+
+Ñ Ñ(2"
+java.lang.Mathsin(D)D*2sin:Bdouble>
+<
+
+Ñ5 Ñ(D"
+java.lang.Mathcos(D)D*2cos:Bdouble<
+:
+
+Ñ Ñ(D	processed"#dependent-value#:Bdouble1
+/
+
+Ò Ò(&	"#dependent-value#:Bdouble#
+!
+
+Ò Ò('
+"#cast#:	Bbyte
+
+Ò Ò((
+*^/Users/riya.pulusuganti/vulnerable-dummy-project/src/main/java/com/example/IssueGenerator.java

@@ -1,0 +1,59 @@
+
+-"(|(uid=admin)(uid=*))"java.lang.String
+ 
+"user.dir"java.lang.String
+6 "Sensitive operation performed."java.lang.String
+,"http://malicious.com"java.lang.String
+("../../etc/passwd"java.lang.String
+ 
+"1 OR 1=1"java.lang.String
+5"<script>alert('XSS')</script>"java.lang.String
+#"password123"java.lang.String
+#"example.com"java.lang.String
+&
+"Sensitive Data"java.lang.String&args ()"java.lang.String[]"¢u
+s
+ (-"A
+com.example.App.sqlInjectionVulnerability(Ljava/lang/String;)V2sqlInjectionVulnerability:Bvoid}
+{
+ (4"E
+com.example.App2commandInjectionVulnerability(Ljava/lang/String;)V2commandInjectionVulnerability:Bvoidc
+a
+ (9"8
+com.example.App%xssVulnerability(Ljava/lang/String;)V2xssVulnerability:Bvoidv
+t
+ (.":
+com.example.App'insecureDeserializationVulnerability()V2$insecureDeserializationVulnerabilityBvoidp
+n
+! !(+	"7
+com.example.App$hardcodedCredentialsVulnerability()V2!hardcodedCredentialsVulnerabilityBvoidñ
+ì
+$ $(C"Q
+com.example.App>insecureCryptographicStorageVulnerability(Ljava/lang/String;)V2)insecureCryptographicStorageVulnerability:
+Bvoidw
+u
+' '(6"B
+com.example.App/pathTraversalVulnerability(Ljava/lang/String;)V2pathTraversalVulnerability:Bvoidä
+á
+* *(7"K
+com.example.App8trustBoundaryViolationVulnerability(Ljava/lang/String;)V2#trustBoundaryViolationVulnerability:Bvoidu
+s
+- -(9"A
+com.example.App.openRedirectVulnerability(Ljava/lang/String;)V2openRedirectVulnerability:BvoidN
+L
+0 0("&
+com.example.AppxxeVulnerability()V2xxeVulnerabilityBvoids
+q
+3 3(/"@
+com.example.App-weakHashingVulnerability(Ljava/lang/String;)V2weakHashingVulnerability:Bvoidw
+u
+6 6(;"B
+com.example.App/ldapInjectionVulnerability(Ljava/lang/String;)V2ldapInjectionVulnerability:BvoidÑ
+Å
+9 9(J"H
+com.example.App5insufficientLoggingVulnerability(Ljava/lang/String;)V2 insufficientLoggingVulnerability:Bvoidr
+p
+< <(,"8
+com.example.App%clearTextTransmissionVulnerability()V2"clearTextTransmissionVulnerabilityBvoid
+
+= =(*S/Users/riya.pulusuganti/vulnerable-dummy-project/src/main/java/com/example/App.java

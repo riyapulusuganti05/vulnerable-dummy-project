@@ -1,0 +1,76 @@
+
+8com.example.IssueGenerator#processNestedLevel2Inner(BI)Bj
+^/Users/riya.pulusuganti/vulnerable-dummy-project/src/main/java/com/example/IssueGenerator.javaÐ Ð()"1*’
+1
+Ñ Ñ(g
+e
+
+Ñ$ Ñ(1	
+%0int"__calculate*
+
+Ñ* Ñ(+
+**
+
+Ñ$ Ñ()
+""*
+
+Ñ, Ñ(1
+""Ž
+‹
+
+Ñ Ñ(2
+%1double"java.lang.Math#sin(D)D*.
+
+__unknown_file ("
+java.lang.Math*'
+
+__unknown_file (
+	
+%0int‰
+†
+
+Ñ5 Ñ(D
+%2double"java.lang.Math#cos(D)D*.
+
+__unknown_file ("
+java.lang.Math*"
+
+__unknown_file (
+""z
+x
+
+Ñ Ñ(D
+%3double"__calculate*
+
+Ñ3 Ñ(4
+**
+
+Ñ Ñ(2
+
+%1double*
+
+Ñ5 Ñ(D
+
+%2doublei
+g
+
+Ò Ò(&
+%4double"__calculate*
+
+Ò! Ò("
+**
+
+Ò Ò( 
+""*
+
+Ò# Ò(&2ÿ"
+
+Ò Ò((
+"": 
+
+__unknown_file (
+"": 
+
+__unknown_file (
+""B
+com.example.IssueGeneratorX

@@ -1,0 +1,76 @@
+
+2com.example.IssueGenerator#processDataChunk([BI)[Bj
+^/Users/riya.pulusuganti/vulnerable-dummy-project/src/main/java/com/example/IssueGenerator.java“ “(%"5*ê
+3
+— —(f
+d
+
+—+ —(7	
+%2int"__calculate*
+
+—1 —(2
+&*
+
+—+ —(0
+""*
+
+—3 —(72ÿl
+j
+
+—  —(8	
+%3int"__calculate*
+
+—( —()
+^*
+
+—  —('
+""*
+
+—* —(8
+	
+%2int*
+4*‚
+4
+– –(i
+g
+
+– –('
+%1boolean"	__compare*
+
+– –(
+<*
+
+– –(
+""*
+
+– –('
+""*
+3
+1*Ž
+5
+•! •(%$"
+
+• •(-
+%0byte[]"byte[]R
+P
+
+• •(.
+resultbyte[]"__id**
+
+__unknown_file (
+
+%0byte[]*
+4*1
+1
+™ ™(" 
+
+™ ™(
+
+resultbyte[]:
+
+“& “(2
+databyte[]: 
+
+__unknown_file (
+""B
+com.example.IssueGenerator

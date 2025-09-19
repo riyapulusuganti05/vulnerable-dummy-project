@@ -18,6 +18,9 @@ public class SecurityTest {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/db", "root", "root");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                System.out.println("Found user: " + rs.getString("username"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

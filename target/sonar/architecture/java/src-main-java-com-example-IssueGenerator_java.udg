@@ -1,0 +1,1016 @@
+
+1.0*riyapulusuganti05_vulnerable-dummy-projectJavaFrontend"1758300246218*java2.Bª
+2
+-src/main/java/com/example/IssueGenerator.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+com.example6
+
+package8
+
+com.example:com.example9
+ 
+com.example.IssueGenerator11
+
+class12
+
+access13
+
+public14
+
+simple-name15
+
+IssueGenerator16
+,
+&com.example.IssueGenerator.DB_PASSWORD18
+
+field19
+
+private20
+
+DB_PASSWORD21
+(
+"com.example.IssueGenerator.API_KEY23
+
+API_KEY24
+,
+&com.example.IssueGenerator.ENVIRONMENT26
+
+ENVIRONMENT27
++
+%com.example.IssueGenerator.DEBUG_MODE29
+
+
+DEBUG_MODE30
+/
+)com.example.IssueGenerator.ENCRYPTION_KEY32
+
+ENCRYPTION_KEY33
+/
+)com.example.IssueGenerator.SERVER_ADDRESS35
+
+SERVER_ADDRESS36
+,
+&com.example.IssueGenerator.SERVER_PORT38
+
+SERVER_PORT39
+'
+!com.example.IssueGenerator.LOGGER41
+
+LOGGER42
+
+
+uses43
++
+%com.example.IssueGenerator.ITERATIONS45
+
+
+ITERATIONS46
++
+%com.example.IssueGenerator.KEY_LENGTH48
+
+
+KEY_LENGTH49
+.
+(com.example.IssueGenerator.SECURE_RANDOM51
+
+SECURE_RANDOM52
+,
+&com.example.IssueGenerator.environment54
+
+environment55
+*
+$com.example.IssueGenerator.debugMode57
+
+	debugMode58
+-
+'com.example.IssueGenerator.unusedField160
+
+unusedField161
+-
+'com.example.IssueGenerator.unusedField263
+
+unusedField264
+*
+$com.example.IssueGenerator#<init>()V66
+
+method67
+
+calls68
+
+
+references69
+,
+&com.example.IssueGenerator.MATRIX_SIZE71
+
+MATRIX_SIZE72
+0
+*com.example.IssueGenerator.ITERATION_COUNT74
+
+ITERATION_COUNT75
++
+%com.example.IssueGenerator.SLEEP_TIME77
+
+
+SLEEP_TIME78
+*
+$com.example.IssueGenerator.FILE_SIZE80
+
+	FILE_SIZE81
+;
+5com.example.IssueGenerator#main([Ljava/lang/String;)V83
+
+
+main84
+
+is type85
+3
+-com.example.IssueGenerator#generateIssues(I)V87
+
+unknown88
+
+generateIssues89
+U
+Ocom.example.IssueGenerator#executeQuery(Ljava/lang/String;[Ljava/lang/Object;)V91
+2
+,com.example.IssueGenerator#riskyOperation()V93
+Y
+Scom.example.IssueGenerator#executeSafeQuery(Ljava/lang/String;[Ljava/lang/Object;)V95
+G
+Acom.example.IssueGenerator#processConfigLine(Ljava/lang/String;)V97
+_
+Ycom.example.IssueGenerator#setSecureSystemProperty(Ljava/lang/String;Ljava/lang/String;)V99
+7
+0com.example.IssueGenerator#processSecureData(I)V101
+
+executeSafeQuery102
+F
+?com.example.IssueGenerator#getConnection()Ljava/sql/Connection;104
+V
+Ocom.example.IssueGenerator#hashPassword(Ljava/lang/String;[B)Ljava/lang/String;106
+
+hashPassword107
+
+setSecureSystemProperty108
+
+processConfigLine109
+?
+8com.example.IssueGenerator#processComplexCalculation(I)V111
+ 
+processComplexCalculation112
+
+processSecureData113
+K
+Dcom.example.IssueGenerator#processNestedLevel1(ILjava/lang/String;)V115
+K
+Dcom.example.IssueGenerator#processNestedLevel2(ILjava/lang/String;)V117
+K
+Dcom.example.IssueGenerator#processNestedLevel3(ILjava/lang/String;)V119
+S
+Lcom.example.IssueGenerator#weakEncrypt(Ljava/lang/String;)Ljava/lang/String;121
+
+weakEncrypt122
+
+riskyOperation123
+9
+2com.example.IssueGenerator#processDataChunk([BI)[B125
+
+	protected126
+
+processDataChunk127
+
+getConnection128
+
+executeQuery129
+
+processNestedLevel1130
+Z
+Scom.example.IssueGenerator#processComplexData(Ljava/lang/String;)Ljava/lang/String;132
+P
+Icom.example.IssueGenerator#processNestedLevel1Inner(ILjava/lang/String;)V134
+
+processNestedLevel1Inner135
+
+processNestedLevel2136
+?
+8com.example.IssueGenerator#processNestedLevel2Inner(BI)B138
+O
+Hcom.example.IssueGenerator#processNestedLevel2Deep(Ljava/lang/String;I)V140
+
+processNestedLevel2Inner141
+
+processNestedLevel2Deep142
+
+processNestedLevel3143
+P
+Icom.example.IssueGenerator#processNestedLevel3Inner(ILjava/lang/String;)V145
+O
+Hcom.example.IssueGenerator#processNestedLevel3Deep(Ljava/lang/String;I)V147
+
+processNestedLevel3Inner148
+@
+9com.example.IssueGenerator#processMatrixOperations([[DI)V150
+
+processNestedLevel3Deep151
+
+processComplexData152
+
+processMatrixOperations153J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6jž
+B
+70<
+707119 *
+14 4(210:7B
+
+
+13
+20
+
+
+15
+72
+H
+137A
+13713867 *
+1Ð Ð(210:7B
+
+
+13
+20
+
+15
+141
+B
+40<
+404119 *
+1# #(210:7B
+
+
+13
+20
+
+
+15
+42
+D
+86>
+868767 *
+1Î Î(210:7B
+
+
+13
+14
+
+
+15
+89
+H
+133A
+13313467 *
+1¿ ¿(210:7B
+
+
+13
+20
+
+15
+135
+B
+44<
+444519 *
+1$ $(210:7B
+
+
+13
+20
+
+
+15
+46
+E
+90?
+909167 *
+1¬ ¬(210:7B
+
+
+13
+20
+
+15
+129
+B
+25<
+252619 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+27
+H
+118A
+11811967 *
+1ß ß(210:7B
+
+
+13
+20
+
+15
+143
+B
+34<
+343519 *
+1   (210:7B
+
+
+13
+20
+
+
+15
+36
+I
+124B
+12412567 *
+1“ “(210:7B
+
+13
+126
+
+15
+127
+B
+28<
+282919 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+30
+B
+37<
+373819 *
+1! !(210:7B
+
+
+13
+20
+
+
+15
+39
+E
+94?
+949567 *
+1ˆ ˆ(210:7B
+
+
+13
+20
+
+15
+102
+H
+146A
+14614767 *
+1ñ ñ(210:7B
+
+
+13
+20
+
+15
+151
+B
+31<
+313219 *
+1 (210:7B
+
+
+13
+20
+
+
+15
+33
+H
+105A
+10510667 *
+1˜ ˜(210:7B
+
+
+13
+20
+
+15
+107
+B
+62<
+626319 *
+1- -(210:7B
+
+
+13
+20
+
+
+15
+64
+B
+65<
+656667 *
+1/ /(210:7B
+
+
+13
+14
+
+
+15
+16
+B
+59<
+596019 *
+1, ,(210:7B
+
+
+13
+20
+
+
+15
+61
+>
+108
+101112 *
+1 (:7B
+
+
+13
+14
+
+
+15
+16
+H
+114A
+11411567 *
+1¸ ¸(210:7B
+
+
+13
+20
+
+15
+130
+B
+47<
+474819 *
+1% %(210:7B
+
+
+13
+20
+
+
+15
+49
+B
+22<
+222319 *
+1 (210:7B
+
+
+13
+20
+
+
+15
+24
+E
+98?
+989967 *
+1© ©(210:7B
+
+
+13
+14
+
+15
+108
+B
+73<
+737419 *
+15 5(210:7B
+
+
+13
+20
+
+
+15
+75
+H
+131A
+13113267 *
+1û û(210:7B
+
+
+13
+20
+
+15
+152
+H
+103A
+10310467 *
+1   (210:7B
+
+
+13
+20
+
+15
+128
+H
+144A
+14414567 *
+1ç ç(210:7B
+
+
+13
+20
+
+15
+148
+H
+149A
+14915067 *
+1… …(210:7B
+
+
+13
+20
+
+15
+153
+B
+76<
+767719 *
+16 6(210:7B
+
+
+13
+20
+
+
+15
+78
+B
+17<
+171819 *
+1 (210:7B
+
+
+13
+20
+
+
+15
+21
+B
+82<
+828367 *
+19 9(210:7B
+
+
+13
+14
+
+
+15
+84
+H
+100A
+10010167 *
+1 (210:7B
+
+
+13
+20
+
+15
+113
+H
+120A
+12012167 *
+1å å(210:7B
+
+
+13
+20
+
+15
+122
+H
+139A
+13914067 *
+1Õ Õ(210:7B
+
+
+13
+20
+
+15
+142
+H
+110A
+11011167 *
+1¿ ¿(210:7B
+
+
+13
+20
+
+15
+112
+B
+53<
+535419 *
+1( ((210:7B
+
+
+13
+20
+
+
+15
+55
+B
+56<
+565719 *
+1) )(210:7B
+
+
+13
+20
+
+
+15
+58
+H
+116A
+11611767 *
+1È È(210:7B
+
+
+13
+20
+
+15
+136
+B
+79<
+798019 *
+17 7(210:7B
+
+
+13
+20
+
+
+15
+81
+E
+92?
+929367 *
+1„ „(210:7B
+
+
+13
+20
+
+15
+123
+E
+96?
+969767 *
+1´ ´(210:7B
+
+
+13
+20
+
+15
+109
+B
+50<
+505119 *
+1& &(210:7B
+
+
+13
+20
+
+
+15
+52rÍ
+
+401043*
+1#; #(I
+
+651068*
+1/ /(
+
+651043*
+10	 0(
+
+651069*
+10	 0(
+
+655369*
+10 0(
+
+651043*
+11	 1(
+
+651069*
+11	 1(
+
+655669*
+11 1(
+
+821085*
+1: :(!
+
+821043*
+1:	 :(
+
+821068*
+1:( :(6
+
+827069*
+1=. =(9
+
+827069*
+1=; =(F
+
+827369*
+1B! B(0
+
+827069*
+1E) E(4
+
+827069*
+1F- F(8
+
+821069*
+1x x(
+
+828668*
+1x x(-
+
+827669*
+1{" {(,
+
+827969*
+1‚4 ‚(=
+
+824069*
+1À À(
+
+824069*
+1À À(
+
+824069*
+1Ã Ã(
+
+824069*
+1Ã Ã(
+
+861069*
+1Ñ	 Ñ(
+
+869068*
+1Ñ	 Ñ(
+
+863469*
+1Ô$ Ô(2
+
+861069*
+1å å(
+
+869268*
+1å å(
+
+861069*
+1ì	 ì(
+
+869468*
+1ì	 ì(
+
+861069*
+1ó ó("
+
+869668*
+1ó ó("
+
+864069*
+1ö ö(
+
+864069*
+1ö ö(
+
+861069*
+1û	 û( 
+
+869868*
+1û	 û( 
+
+861069*
+1ÿ	 ÿ(
+
+8610068*
+1ÿ	 ÿ(
+
+941069*
+1‰  ‰(-
+
+9410368*
+1‰  ‰(-
+
+1054469*
+1š+ š(5
+
+1054769*
+1š7 š(A
+
+964069*
+1· ·(
+
+964069*
+1· ·(
+
+1101069*
+1ä ä(%
+
+1109068*
+1ä ä(%
+
+1104069*
+1†	 †(
+
+1104069*
+1†	 †(
+
+1001069*
+1’	 ’(
+
+10011468*
+1’	 ’(
+
+1001069*
+1“	 “(
+
+10011668*
+1“	 “(
+
+1001069*
+1”	 ”(
+
+10011868*
+1”	 ”(
+
+1001069*
+1œ œ((
+
+10012068*
+1œ œ((
+
+1003169*
+1¢1 ¢(?
+
+1203169*
+1ó! ó(/
+
+1203169*
+1ó! ó(/
+
+1203169*
+1ó; ó(I
+
+1203169*
+1ó; ó(I
+
+901069*
+1­  ­(-
+
+9010368*
+1­  ­(-
+
+1141069*
+1º  º(2
+
+11413168*
+1º  º(2
+
+1141069*
+1» »(%
+
+11413368*
+1» »(%
+
+1331069*
+1Ã Ã(*
+
+13311068*
+1Ã Ã(*
+
+1161069*
+1Ë Ë(0
+
+11613768*
+1Ë Ë(0
+
+1161069*
+1Í	 Í( 
+
+11613968*
+1Í	 Í( 
+
+1391069*
+1Ø Ø(*
+
+13911068*
+1Ø Ø(*
+
+1391069*
+1Ú Ú()
+
+13913368*
+1Ú Ú()
+
+1181069*
+1á  á(2
+
+11813168*
+1á  á(2
+
+1181069*
+1â â(%
+
+11814468*
+1â â(%
+
+1181069*
+1ã ã($
+
+11814668*
+1ã ã($
+
+1441069*
+1î	 î( 
+
+14414968*
+1î	 î( 
+
+1461069*
+1ò ò(,
+
+14612468*
+1ò ò(,
+
+1461069*
+1ö ö((
+
+14613968*
+1ö ö((

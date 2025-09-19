@@ -7,7 +7,6 @@ import java.security.*;
 import java.sql.*;
 import java.util.Base64;
 import java.util.logging.*;
-import javax.servlet.http.*;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.InputSource;

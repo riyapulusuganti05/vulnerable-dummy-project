@@ -1,0 +1,65 @@
+SonarCloud plugins:
+  - Text Code Quality and Security 2.21.0.5225 (textenterprise)
+  - JaCoCo 1.3.0.1538 (jacoco)
+  - IaC Code Quality and Security 1.44.0.14670 (iacenterprise)
+  - IaC Code Quality and Security 1.44.0.14670 (iac)
+Project server settings:
+  - sonar.abap.file.suffixes=.abap,.ab4,.flow,.asprog
+  - sonar.apex.file.suffixes=.cls,.trigger
+  - sonar.autoscan.enabled=false
+  - sonar.azureresourcemanager.file.suffixes=.bicep
+  - sonar.c.file.suffixes=.c,.h
+  - sonar.cpp.file.suffixes=.cc,.cpp,.cxx,.c++,.hh,.hpp,.hxx,.h++,.ipp,.ixx,.mxx,.cppm,.ccm,.cxxm,.c++m
+  - sonar.cs.file.suffixes=.cs,.razor
+  - sonar.css.file.suffixes=.css,.less,.scss,.sass
+  - sonar.dart.file.suffixes=.dart
+  - sonar.docker.file.patterns=Dockerfile,*.dockerfile
+  - sonar.flex.file.suffixes=as
+  - sonar.go.file.suffixes=.go
+  - sonar.html.file.suffixes=.html,.xhtml,.cshtml,.vbhtml,.aspx,.ascx,.rhtml,.erb,.shtm,.shtml,.cmp,.twig
+  - sonar.ipynb.file.suffixes=ipynb
+  - sonar.java.file.suffixes=.java,.jav
+  - sonar.java.jvmframeworkconfig.file.patterns=**/src/main/resources/**/*app*.properties,**/src/main/resources/**/*app*.yaml,**/src/main/resources/**/*app*.yml
+  - sonar.javascript.file.suffixes=.js,.jsx,.cjs,.mjs,.vue
+  - sonar.jcl.file.suffixes=.jcl
+  - sonar.json.file.suffixes=.json
+  - sonar.jsp.file.suffixes=.jsp,.jspf,.jspx
+  - sonar.kotlin.file.suffixes=.kt,.kts
+  - sonar.objc.file.suffixes=.m
+  - sonar.php.file.suffixes=php,php3,php4,php5,phtml,inc
+  - sonar.pli.file.suffixes=.pli
+  - sonar.plsql.file.suffixes=sql,tab,pkb
+  - sonar.python.file.suffixes=py
+  - sonar.rpg.file.suffixes=.rpg,.rpgle,.sqlrpgle,.RPG,.RPGLE,.SQLRPGLE
+  - sonar.ruby.file.suffixes=.rb
+  - sonar.scala.file.suffixes=.scala
+  - sonar.swift.file.suffixes=.swift
+  - sonar.terraform.file.suffixes=.tf
+  - sonar.tsql.file.suffixes=.tsql
+  - sonar.typescript.file.suffixes=.ts,.tsx,.cts,.mts
+  - sonar.vb.file.suffixes=.bas,.frm,.ctl
+  - sonar.vbnet.file.suffixes=.vb
+  - sonar.xml.file.suffixes=.xml,.xsd,.xsl,.config
+  - sonar.yaml.file.suffixes=.yaml,.yml
+Project scanner properties:
+  - sonar.host.url=https://sonarcloud.io
+  - sonar.java.binaries=bin
+  - sonar.java.libraries=/Users/riya.pulusuganti/.m2/repository/**/*.jar
+  - sonar.language=java
+  - sonar.organization=riyapulusuganti05
+  - sonar.projectBaseDir=/Users/riya.pulusuganti/vulnerable-dummy-project
+  - sonar.projectKey=riyapulusuganti05_vulnerable-dummy-project
+  - sonar.scanner.apiBaseUrl=https://api.sonarcloud.io
+  - sonar.scanner.app=ScannerCLI
+  - sonar.scanner.appVersion=7.0.2.4839
+  - sonar.scanner.arch=arm64
+  - sonar.scanner.bootstrapStartTime=1742834266015
+  - sonar.scanner.home=/opt/homebrew/Cellar/sonar-scanner/7.0.2.4839/libexec
+  - sonar.scanner.os=macos
+  - sonar.scanner.truststorePassword=changeit
+  - sonar.scanner.truststorePath=/opt/homebrew/Cellar/openjdk@17/17.0.14/libexec/openjdk.jdk/Contents/Home/lib/security/cacerts
+  - sonar.scanner.wasEngineCacheHit=false
+  - sonar.scanner.wasJreCacheHit=MISS
+  - sonar.sources=src/main/java
+  - sonar.token=******
+  - sonar.working.directory=/Users/riya.pulusuganti/vulnerable-dummy-project/.scannerwork
